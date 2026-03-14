@@ -14,9 +14,27 @@ export class Game {
     scoreItem.textContent = score;
   }
 
+  _raiseFail() {
+    const failItem = document.querySelector(".fail");
+    const fail = Number(failItem.textContent) + 1;
+    failItem.textContent = fail;
+    if (fail === 5) {
+      alert("Игра окончена");
+      this.startGame();
+    }
+  }
+
   startGame() {
+    this.restartGame();
     this.moveGoblin();
     this.nextStep();
+  }
+
+  restartGame() {
+    const scoreItem = document.querySelector(".score");
+    const failItem = document.querySelector(".fail");
+    scoreItem.textContent = 0;
+    failItem.textContent = 0;
   }
 
   nextStep() {
@@ -24,7 +42,10 @@ export class Game {
     this.intervalId = null;
     this.intervalId = setInterval(() => {
       this.moveGoblin();
-    }, 1500);
+      setTimeout(() => {
+        this._raiseFail();
+      }, 0);
+    }, 1000);
   }
 
   moveGoblin() {
@@ -56,5 +77,13 @@ export class Game {
         }
       });
     });
+  }
+
+  setListenerEndGame() {
+    const failItem = document.querySelector(".fail");
+    failItem.addEventListener("", () => {
+
+    })
+
   }
 }
