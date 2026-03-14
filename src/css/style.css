@@ -1,0 +1,41 @@
+.img_title {
+  display: block;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.pools {
+  display: flex;
+  padding: 0;
+  margin: 0 auto;
+  width: 340px;
+
+
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pool {
+  padding: 0;
+  margin: 10px;
+  box-sizing: border-box;
+
+  height: 150px;
+  width: 150px;
+  border: 5px solid rgb(101, 158, 16);
+  border-radius: 50%;
+}
+
+.pool_with_goblin {
+  background-image: url("../img/goblin.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+p {
+  text-align: center;
+  font-size: 30px;
+}
+
