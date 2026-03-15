@@ -13,6 +13,7 @@ export class Pool {
     do {
       num = Math.floor(Math.random() * (max - min + 1)) + min;
     } while (num == current);
+    console.log("старое значение:", current, "новое значение", num);
     return num;
   }
 

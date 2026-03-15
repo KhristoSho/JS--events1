@@ -12,6 +12,6 @@ export class Goblin {
     img.src = goblinPNG;
     img.alt = "goblin";
     img.classList.add("goblin");
-    element.appendChild(img);
+    element.append(img);
   }
 }

@@ -2,7 +2,9 @@ import { Goblin } from "../goblin/goblin";
 import { Pool } from "../pool/pool";
 
 export class Game {
-  constructor() {
+  constructor(numOfPools, numOfFails) {
+    this.numOfPools = numOfPools;
+    this.numOfFails = numOfFails;
     this.goblin = new Goblin();
     this.pool = new Pool();
     this.intervalId = null;
@@ -18,7 +20,7 @@ export class Game {
     const failItem = document.querySelector(".fail");
     const fail = Number(failItem.textContent) + 1;
     failItem.textContent = fail;
-    if (fail === 5) {
+    if (fail === this.numOfFails) {
       this.failGame();
     }
   }
@@ -26,8 +28,9 @@ export class Game {
   startGame() {
     this.restartGame();
     if (document.querySelector(".pool") === null) {
-      this.pool.createPool(8);
+      this.pool.createPool(this.numOfPools);
     }
+    this.setListenerOnPool();
     this.moveGoblin();
     this.nextStep();
   }
@@ -78,14 +81,14 @@ export class Game {
 
     if (!poolWithGoblin) {
       const pools = this.pool.getAllPool();
-      const randomPool = pools[this.pool.getNumPool(0, 7)];
+      const randomPool = pools[this.pool.getNumPool(0, this.numOfPools - 1)];
       this.goblin.putGoblin(randomPool);
       return;
     }
 
-    const currNum = poolWithGoblin.dataset.id;
+    const currNum = poolWithGoblin.dataset.id - 1;
     const pools = this.pool.getAllPool();
-    const poolNum = this.pool.getNumPool(0, 7, currNum);
+    const poolNum = this.pool.getNumPool(0, this.numOfPools - 1, currNum);
 
     this.goblin.removeGoblin(poolWithGoblin);
     this.goblin.putGoblin(pools[poolNum]);
