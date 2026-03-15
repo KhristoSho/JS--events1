@@ -8,7 +8,7 @@
   display: flex;
   padding: 0;
   margin: 0 auto;
-  width: 340px;
+  width: 680px;
 
 
   justify-content: center;
@@ -27,15 +27,25 @@
   border-radius: 50%;
 }
 
-.pool_with_goblin {
-  background-image: url("../img/goblin.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+.goblin {
+  width: 140px;
 }
 
 p {
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
 }
+
+
+.window-fail {
+  margin-top: 25px;
+  display: flex;
+  font-size: 25px;
+}
+
+.restart-button {
+  width: 0 auto;
+  font-size: 20px;
+}
+
 
